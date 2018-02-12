@@ -16,10 +16,10 @@ to test.
 
 ### Notes on implementation
 
-I haven't figured out file structure best practices for golang so to keep this simple everything is in `main.go`.  To document the solution at each step I copied my main into solution files labeled accordingly.  Although I was able to solve steps 3-5 in one step because of how related they are.
+I haven't figured out file structure best practices for golang so to keep this simple everything is in `main.go`.  At each step I copied my main into solution files labeled accordingly.  Although I was able to solve steps 3-5 in one step because of how related they are.
 
-The second being I leaned into the more verbose side of logging to document the important steps at each method call.  Hopefully this helps the results verification process.  If this was actually Production I'd replace most of those console logs with proper test coverage to ensure that at each functional step my business logic was still sound.
+I leaned into the more verbose side of logging to document the important steps at each method call.  Hopefully this helps the results verification process.  If this was actually production, I'd replace most of those console logs with proper test coverage to ensure that at each functional step my business logic was still sound.
 
-The requested precision of milliseconds is not precise enough to show meaningful metrics because this job completes in .4-.7 milliseconds.  When the artificial delay of 5 seconds is introduced the average always comes out to be 5000 (without the delay it rounds milliseconds down to 0)  A different precision would need to be implemented to improve this number.
+The requested precision of milliseconds is not precise enough to show meaningful metrics because this job completes in .4-.7 milliseconds.  When the artificial delay of 5 seconds is introduced, the average always comes out to be 5000 (without the delay it rounds milliseconds down to 0)  A different precision would need to be implemented to improve this number.
 
 My use of a Map construct is a simple replacement for an external data store that would persist storage across multiple instances of the service in production.
