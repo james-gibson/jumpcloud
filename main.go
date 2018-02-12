@@ -163,7 +163,7 @@ func getHashIdFromPath(r *http.Request) string {
     }
 }
 
-func lookupId(lookupTable map[string]completedHashJob) func (http.ResponseWriter, *http.Request){
+func lookupHandler(lookupTable map[string]completedHashJob) func (http.ResponseWriter, *http.Request){
     fmt.Println("Launching lookup service")
     return func (w http.ResponseWriter, r *http.Request) {
         fmt.Println("someone has requested a lookup")
@@ -199,7 +199,7 @@ func main() {
     go func(done chan bool) {
         fmt.Println("Spawned server thread")
         http.HandleFunc("/stats", statsHandler(lookupTable))
-        http.HandleFunc("/hash/", lookupId(lookupTable))
+        http.HandleFunc("/hash/", lookupHandler(lookupTable))
         http.HandleFunc("/hash", hashHandler(addJobToQueue(jobs)))
 
         http.HandleFunc("/shutdown", shutdownHandler(done,jobs))
